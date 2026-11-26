@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tecjournal.app/sitemap.xml
