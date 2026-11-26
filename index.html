@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Tac Journal – Trading journal for NQ &amp; ES day traders</title>
-<meta name="description" content="Tac Journal is a trading journal for day traders. Log trades in seconds and see win rate, R-multiples, equity curve and daily bias accuracy. Includes a prop firm tracker, daily checklist and Mac, Windows and web apps.">
+<title>Tec Journal – Trading journal for NQ &amp; ES day traders</title>
+<meta name="description" content="Tec Journal is a trading journal for day traders. Log trades in seconds and see win rate, R-multiples, equity curve and daily bias accuracy. Includes a prop firm tracker, daily checklist and Mac, Windows and web apps.">
 <link rel="canonical" href="https://tecjournal.app/">
 <link rel="icon" href="logo.png" type="image/png">
 <meta name="theme-color" content="#14171a">
-<meta property="og:type" content="website"><meta property="og:site_name" content="Tac Journal"><meta property="og:title" content="Tac Journal – Trading journal for NQ &amp; ES day traders"><meta property="og:description" content="Log trades in seconds. Stats, equity curve, daily bias, prop accounts and a daily checklist, on web, Mac and Windows."><meta property="og:url" content="https://tecjournal.app/"><meta property="og:image" content="https://tecjournal.app/logo.png">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Tec Journal"><meta property="og:title" content="Tec Journal – Trading journal for NQ &amp; ES day traders"><meta property="og:description" content="Log trades in seconds. Stats, equity curve, daily bias, prop accounts and a daily checklist, on web, Mac and Windows."><meta property="og:url" content="https://tecjournal.app/"><meta property="og:image" content="https://tecjournal.app/logo.png">
 <meta name="twitter:card" content="summary">
 <link href="fonts.css" rel="stylesheet">
 <style>
@@ -280,6 +280,7 @@ html[data-platform="win32"] .rail,html[data-platform="linux"] .rail{top:20px;hei
 /* ===== checklist ===== */
 body[data-pg=checklist] .hbar .seg,body[data-pg=checklist] #fb{display:none}
 .rail{overflow-y:auto;scrollbar-width:none}.rail::-webkit-scrollbar{display:none}
+@media(max-width:820px){html .rail,html[data-platform] .rail{top:auto;height:62px;min-height:0;overflow:visible}html .stage{padding-top:8px}.rail{gap:0;padding:0 4px}.rb{width:34px;height:34px;flex:none}.rb svg{width:18px;height:18px}}
 .cl-h{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:6px 0 16px}
 .cl-h h2{font-size:clamp(28px,4vw,44px);letter-spacing:-.045em;font-weight:400;margin:0;line-height:1}
 .cl-add{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;align-items:center}.cl-add input[type=text]{flex:1;min-width:150px;width:auto}.cl-add input[type=date]{width:auto}
@@ -308,12 +309,26 @@ body[data-pg=checklist] .hbar .seg,body[data-pg=checklist] #fb{display:none}
 @media(max-width:820px){#tip{transform:translateY(4px)}#tip.on{transform:none}}
 .lp-ck{display:grid;gap:8px}.lp-ck div{display:flex;align-items:center;gap:10px;background:var(--in);border-radius:99px;padding:9px 14px;font-size:14px}.lp-ck i{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--bd);flex:none}.lp-ck i.f{background:var(--ac);border:0}
 .sy{width:12px;height:12px;border-radius:50%;padding:0;border:0;background:var(--mut);flex:none;align-self:center}.sy[data-s=ok]{background:var(--win)}.sy[data-s=busy]{background:var(--be);animation:syp 1s infinite}.sy[data-s=err]{background:var(--loss)}.sy:hover{background:inherit}@keyframes syp{50%{opacity:.35}}
+
+.lp-dsub{color:var(--mut);margin:-4px 0 22px;max-width:560px;line-height:1.5}
+.dl-g{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.dl-c{display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--bd);border-radius:26px;padding:24px;text-decoration:none;color:var(--tx);transition:transform .15s,border-color .15s}
+.dl-c:hover{transform:translateY(-2px);border-color:var(--lime)}
+.dl-c b{font-size:19px;font-weight:500;letter-spacing:-.02em}.dl-c span{color:var(--mut);font-size:13px}
+.dl-c i{font-style:normal;margin-top:14px;align-self:flex-start;background:var(--lime);color:#fff;border-radius:99px;padding:9px 16px;font-size:13px;font-weight:500}
+.dl-c.rec{border-color:var(--lime);box-shadow:0 0 0 2px color-mix(in srgb,var(--lime) 30%,transparent)}
+.dl-n{color:var(--mut);font-size:13px;line-height:1.6;margin-top:16px;max-width:760px}
+@media(max-width:820px){.dl-g{grid-template-columns:1fr}}
+#nc{position:fixed;inset:0;z-index:9999;background:rgba(10,12,16,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px}
+#nc.on{display:flex}
+#nc .box{background:var(--card);color:var(--tx);border-radius:30px;padding:30px 26px;max-width:380px;text-align:center;box-shadow:var(--sh)}
+#nc h3{margin:0 0 10px;font-size:26px;font-weight:500;letter-spacing:-.03em;text-transform:none;color:var(--tx)}#lp-dl{scroll-margin-top:90px}#nc p{margin:0;color:var(--mut);line-height:1.55;font-size:15px}
 </style></head>
 <body>
 <div id="drag"></div>
 <div id="lp" hidden><div class="lp-shell">
-<header class="lp-nav"><div class="lp-brand" data-lp="top"><span class="lp-mark"><img src="logo.png" alt=""></span><span class="lp-bn">Tac Journal</span></div>
-<nav class="lp-links"><a data-lp="go" data-t="lp-features">Features</a><a data-lp="go" data-t="lp-preview">Dashboard</a><a data-lp="go" data-t="lp-how">How it works</a><a data-lp="go" data-t="lp-faq">FAQ</a></nav><span class="sp"></span>
+<header class="lp-nav"><div class="lp-brand" data-lp="top"><span class="lp-mark"><img src="logo.png" alt=""></span><span class="lp-bn">Tec Journal</span></div>
+<nav class="lp-links"><a data-lp="go" data-t="lp-features">Features</a><a data-lp="go" data-t="lp-preview">Dashboard</a><a data-lp="go" data-t="lp-how">How it works</a><a data-lp="go" data-t="lp-dl">Download</a><a data-lp="go" data-t="lp-faq">FAQ</a></nav><span class="sp"></span>
 <button class="lp-ib" data-lp="theme" title="Change theme" aria-label="Change theme"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 010 18z" style="fill:currentColor"/></svg></button>
 <button data-lp="login" class="lp-hide">Log in</button><button class="pri" data-lp="signup">Get started</button></header>
 <section class="lp-hero"><div><span class="lp-eb"><i>New</i>The journal built for day traders</span>
@@ -329,18 +344,26 @@ body[data-pg=checklist] .hbar .seg,body[data-pg=checklist] #fb{display:none}
 <div class="lp-pv" id="lp-pv"></div><div class="lp-cap">Sample data</div></section>
 <section class="lp-sec lp-rv" id="lp-how"><div class="lp-k">How it works</div><h2 class="lp-h2">Three steps. No setup headaches.</h2>
 <div class="lp-steps"><div class="lp-st"><div class="n">01</div><h3>Create your account</h3><p>Sign up with your email and you get your own journal with live and backtest modes.</p></div><div class="lp-st"><div class="n">02</div><h3>Log trades and days</h3><p>Pick your options, add a screenshot, write your plan before the open and your review after.</p></div><div class="lp-st"><div class="n">03</div><h3>See what works</h3><p>Your stats update on their own, so you can see which setups pay you and which ones to drop.</p></div></div></section>
+<section class="lp-sec lp-rv" id="lp-dl"><div class="lp-k">Download</div><h2 class="lp-h2">Get the desktop app.</h2>
+<p class="lp-dsub">Same account as the website. Works offline and syncs when you are back online.</p>
+<div class="dl-g">
+<a class="dl-c" data-os="mac-arm" href="https://github.com/TecJournal/tecjournal-site/releases/latest/download/Tec-Journal-Mac-Apple-Silicon.zip" download><b>Mac, Apple Silicon</b><span>M1, M2, M3 and newer</span><i>Download for Mac</i></a>
+<a class="dl-c" data-os="mac-intel" href="https://github.com/TecJournal/tecjournal-site/releases/latest/download/Tec-Journal-Mac-Intel.zip" download><b>Mac, Intel</b><span>Older Intel Macs</span><i>Download for Mac</i></a>
+<a class="dl-c" data-os="win" href="https://github.com/TecJournal/tecjournal-site/releases/latest/download/Tec-Journal-Windows-Setup.exe" download><b>Windows</b><span>Windows 10 and 11, 64-bit</span><i>Download for Windows</i></a>
+</div>
+<p class="dl-n"><b>Mac:</b> unzip, drag Tec Journal to Applications, then right-click the app and choose Open the first time. Not sure which Mac? Apple menu, About This Mac: "Apple M" is Apple Silicon, "Intel" is Intel.<br><b>Windows:</b> if SmartScreen warns, click More info, then Run anyway. The app is not code-signed yet.</p></section>
 <section class="lp-sec lp-rv" id="lp-faq"><div class="lp-k">FAQ</div><h2 class="lp-h2">Good questions.</h2>
 <div class="lp-faq"><details><summary>Where is my data stored?</summary><p>Your journal is saved on your device and synced to your private cloud account, so it is the same on the web, Mac and Windows. Only you can see it. Export a full backup from Customize at any time.</p></details><details><summary>Can I bring my old trades?</summary><p>Yes. Export your Notion journal as CSV and import it. You match the columns once and the trades come across.</p></details><details><summary>Do I have to trade NQ and ES?</summary><p>No. Instruments, models, timeframes, confluences and mistakes are all editable, so the journal fits how you trade.</p></details><details><summary>Does it connect to my broker?</summary><p>Not yet. You log trades yourself or import a CSV, which keeps you looking at every trade you take.</p></details><details><summary>Can I journal backtests separately?</summary><p>Yes. Switch between Live and Backtest and each keeps its own trades, days and stats.</p></details></div></section>
 <section class="lp-end lp-rv"><h2>Ready for your next session?</h2><p>Create your account and log your first trade in under a minute.</p><button class="lp-wh lp-big" data-lp="signup">Create your account &rarr;</button></section>
-<footer class="lp-ft"><div class="lp-brand" style="cursor:default"><span class="lp-mark"><img src="logo.png" alt=""></span><span class="lp-bn">Tac Journal</span></div><span>&copy; 2026 &middot; Made for traders who review their trades</span><span><a data-lp="login" style="cursor:pointer;margin-right:14px">Log in</a><a data-lp="signup" style="cursor:pointer;margin-right:14px">Sign up</a><a href="https://tecjournal.app/privacy" target="_blank" rel="noopener" style="margin-right:14px;color:inherit">Privacy</a><a href="https://tecjournal.app/terms" target="_blank" rel="noopener" style="color:inherit">Terms</a></span></footer>
+<footer class="lp-ft"><div class="lp-brand" style="cursor:default"><span class="lp-mark"><img src="logo.png" alt=""></span><span class="lp-bn">Tec Journal</span></div><span>&copy; 2026 &middot; Made for traders who review their trades</span><span><a data-lp="login" style="cursor:pointer;margin-right:14px">Log in</a><a data-lp="signup" style="cursor:pointer;margin-right:14px">Sign up</a><a href="https://tecjournal.app/privacy" target="_blank" rel="noopener" style="margin-right:14px;color:inherit">Privacy</a><a href="https://tecjournal.app/terms" target="_blank" rel="noopener" style="color:inherit">Terms</a></span></footer>
 </div></div>
-<div id="am" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="am-t"><div class="box" style="max-width:440px;padding:26px"><div class="row"><span class="lp-mark"><img src="logo.png" alt=""></span><b class="am-brand">Tac Journal</b></div>
+<div id="am" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="am-t"><div class="box" style="max-width:440px;padding:26px"><div class="row"><span class="lp-mark"><img src="logo.png" alt=""></span><b class="am-brand">Tec Journal</b></div>
 <h2 class="lp-am-t" id="am-t">Create your account</h2><div class="mut" id="am-s">Start your journal in under a minute.</div>
 <form id="am-f" novalidate><div id="am-nw"><label for="am-n">Name</label><input id="am-n" autocomplete="name" placeholder="Your name"></div><label for="am-e">Email</label><input id="am-e" type="email" autocomplete="email" placeholder="you@email.com"><label for="am-p">Password</label><input id="am-p" type="password" autocomplete="current-password" placeholder="At least 8 characters">
 <div class="lp-err" id="am-er" role="alert"></div><button type="submit" class="lp-cta lp-big" id="am-go" style="width:100%;margin-top:6px">Create account</button></form>
 <div class="row" style="justify-content:center;margin-top:16px"><span class="mut" id="am-sw"></span><button data-lp="swap" id="am-sb" style="background:none;padding:6px 4px;color:var(--ac);font-weight:600"></button></div>
 <div class="lp-note">Your journal is saved on this computer. Logging out never deletes it.</div></div></div>
-<div class="stage" id="stg" hidden><div class="shell"><aside class="rail"><button class="rb brand" data-a="nav" data-v="home" title="Home"><img src="logo.png" alt="Tac Journal"></button><button class="rb" data-a="nav" data-v="home" title="Home"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></button><button class="rb" data-a="nav" data-v="journal" title="Journal"><svg viewBox="0 0 24 24"><path d="M4 5h6a3 3 0 013 3v12a2 2 0 00-2-2H4z"/><path d="M20 5h-6a3 3 0 00-3 3v12a2 2 0 012-2h7z"/></svg></button><button class="rb" data-a="nav" data-v="daily" title="Daily bias"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></button><button class="rb" data-a="nav" data-v="checklist" title="Daily checklist"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.5 1.5L7 5M3.5 12l1.5 1.5L7 11M3.5 18l1.5 1.5L7 17"/></svg></button><button class="rb" data-a="nav" data-v="weekly" title="Weekly review"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></button><button class="rb" data-a="nav" data-v="analytics" title="Analytics"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></button><button class="rb" data-a="nav" data-v="accounts" title="Prop accounts"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18M16 15h2"/></svg></button><span class="sp"></span><button class="rb" data-a="logout" title="Log out"><svg viewBox="0 0 24 24"><path d="M9 4H5a2 2 0 00-2 2v12a2 2 0 002 2h4"/><path d="M16 8l4 4-4 4M20 12H9"/></svg></button><button class="rb" data-a="theme" title="Change theme"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 010 18z" style="fill:currentColor"/></svg></button><button class="rb" data-a="opts" title="Customize"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg></button></aside><main class="main"><div class="hbar"><div><div class="logo"></div><h1 id="pt"></h1></div><span class="sp" style="flex:1"></span><div class="seg"><button data-a="mode" data-v="live">Live</button><button data-a="mode" data-v="backtest">Backtest</button></div><button id="fb" data-a="fpanel">Filters</button><button class="pri" id="nb" data-a="newT">+ New trade</button><button id="sy" class="sy" data-a="syncnow" data-s="none" hidden aria-label="Cloud sync status"></button><button class="av" id="avb" data-a="pmenu" aria-label="Account menu" aria-haspopup="menu"></button></div><div id="app"></div></main></div></div>
+<div class="stage" id="stg" hidden><div class="shell"><aside class="rail"><button class="rb brand" data-a="nav" data-v="home" title="Home"><img src="logo.png" alt="Tec Journal"></button><button class="rb" data-a="nav" data-v="home" title="Home"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></button><button class="rb" data-a="nav" data-v="journal" title="Journal"><svg viewBox="0 0 24 24"><path d="M4 5h6a3 3 0 013 3v12a2 2 0 00-2-2H4z"/><path d="M20 5h-6a3 3 0 00-3 3v12a2 2 0 012-2h7z"/></svg></button><button class="rb" data-a="nav" data-v="daily" title="Daily bias"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></button><button class="rb" data-a="nav" data-v="checklist" title="Daily checklist"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.5 1.5L7 5M3.5 12l1.5 1.5L7 11M3.5 18l1.5 1.5L7 17"/></svg></button><button class="rb" data-a="nav" data-v="weekly" title="Weekly review"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></button><button class="rb" data-a="nav" data-v="analytics" title="Analytics"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></button><button class="rb" data-a="nav" data-v="accounts" title="Prop accounts"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18M16 15h2"/></svg></button><span class="sp"></span><button class="rb" data-a="logout" title="Log out"><svg viewBox="0 0 24 24"><path d="M9 4H5a2 2 0 00-2 2v12a2 2 0 002 2h4"/><path d="M16 8l4 4-4 4M20 12H9"/></svg></button><button class="rb" data-a="theme" title="Change theme"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 010 18z" style="fill:currentColor"/></svg></button><button class="rb" data-a="opts" title="Customize"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg></button></aside><main class="main"><div class="hbar"><div><div class="logo"></div><h1 id="pt"></h1></div><span class="sp" style="flex:1"></span><div class="seg"><button data-a="mode" data-v="live">Live</button><button data-a="mode" data-v="backtest">Backtest</button></div><button id="fb" data-a="fpanel">Filters</button><button class="pri" id="nb" data-a="newT">+ New trade</button><button id="sy" class="sy" data-a="syncnow" data-s="none" hidden aria-label="Cloud sync status"></button><button class="av" id="avb" data-a="pmenu" aria-label="Account menu" aria-haspopup="menu"></button></div><div id="app"></div></main></div></div>
 <div id="lb"><img alt=""></div><div id="toast"></div><input type="file" id="impf" accept=".json" hidden><input type="file" id="hf" accept="image/*" hidden><input type="file" id="avf" accept="image/*" hidden>
 <script src="config.js"></script><script src="supabase.js"></script>
 <script>
@@ -351,7 +374,7 @@ conf:["ES SMT divergence","ES confirms move","ES not confirming","Liquidity swee
 mistakes:["Early entry","Late entry","Moved stop","No confirmation","Oversized","Revenge trade","FOMO"]};
 const RDEF={"BE":0,"Win":2,"Loss":-1,"BE → Win":0,"BE → Loss":0,"Tape":.5},MULTI=["po3","conf","mistakes"],HU={"A+":150,"A":180,"B":45,"C":355,"Long":150,"Short":355,"Funded":150,"Eval":215};
 const GROUPS=[["acct","Account type"],["tf","Entry timeframe"],["rating","Trade rating"],["po3","PO3"],["model","Model"],["result","Results"],["dir","Long / Short"],["day","Day of week"],["conf","Confluences"],["mistakes","Mistakes"]];
-let AC=[],af={t:"all",s:"all"},hk,HM={title:"Tac Journal",quote:"Small improvements made every day compound into a version of yourself you’ll barely recognize a year from now.",cover:"",covers:{}},atab="perf",DY=[],J="live",RISK=0,T=[],O={},idb=null,page="home",jv="table",showF=false,flt={},fmode="any",period="all",M=null,unit="R",cal=new Date();
+let AC=[],af={t:"all",s:"all"},hk,HM={title:"Tec Journal",quote:"Small improvements made every day compound into a version of yourself you’ll barely recognize a year from now.",cover:"",covers:{}},atab="perf",DY=[],J="live",RISK=0,T=[],O={},idb=null,page="home",jv="table",showF=false,flt={},fmode="any",period="all",M=null,unit="R",cal=new Date();
 const $=s=>document.querySelector(s),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const rd=n=>Math.round(n*100)/100,fR=n=>(n>0?"+":"")+rd(n)+"R",fM=n=>(n<0?"-":"")+"$"+Math.abs(rd(n)).toLocaleString(),c=n=>n>0?"win":n<0?"loss":"be";
 const hue=v=>HU[v]??([...String(v)].reduce((a,ch)=>a*31+ch.charCodeAt(0),7)%360);
@@ -380,7 +403,7 @@ function inP(t){if(period==="all")return true;const n=new Date(),d=new Date(t.da
 function match(t){for(const f in flt){const s=flt[f];if(!s.size||(f==="acct"&&J!=="live"))continue;if(MULTI.includes(f)){const a=t[f]||[];if(!(fmode==="all"?[...s].every(x=>a.includes(x)):[...s].some(x=>a.includes(x))))return false}else if(!s.has(t[f]))return false}return true}
 const filtered=()=>T.filter(t=>t.jr===J&&inP(t)&&match(t));
 /* render */
-function render(){document.querySelectorAll("[data-a=nav]").forEach(b=>b.classList.toggle("on",b.dataset.v===page));document.querySelectorAll("[data-a=mode]").forEach(b=>b.classList.toggle("on",b.dataset.v===J));{const nbm={daily:["+ New day","newD"],accounts:["+ New account","newA"],checklist:["+ Add item","clfocus"]}[page]||["+ New trade","newT"];$("#nb").textContent=nbm[0];$("#nb").dataset.a=nbm[1]}$(".logo").textContent=J==="live"?"Tac Journal":"Tac Journal · Backtest";$("#pt").textContent=({home:"",journal:"Journal",daily:"Daily analysis",weekly:"Weekly review",analytics:"Analytics",accounts:"Prop accounts",checklist:"Daily checklist"})[page]||"";document.body.dataset.pg=page;
+function render(){document.querySelectorAll("[data-a=nav]").forEach(b=>b.classList.toggle("on",b.dataset.v===page));document.querySelectorAll("[data-a=mode]").forEach(b=>b.classList.toggle("on",b.dataset.v===J));{const nbm={daily:["+ New day","newD"],accounts:["+ New account","newA"],checklist:["+ Add item","clfocus"]}[page]||["+ New trade","newT"];$("#nb").textContent=nbm[0];$("#nb").dataset.a=nbm[1]}$(".logo").textContent=J==="live"?"Tec Journal":"Tec Journal · Backtest";$("#pt").textContent=({home:"",journal:"Journal",daily:"Daily analysis",weekly:"Weekly review",analytics:"Analytics",accounts:"Prop accounts",checklist:"Daily checklist"})[page]||"";document.body.dataset.pg=page;
  const n=Object.values(flt).reduce((s,x)=>s+x.size,0)+(period!=="all"?1:0);$("#fb").textContent="Filters"+(n?" · "+n:"");$("#fb").classList.toggle("on",!!n||showF);
  const f=filtered();$("#app").innerHTML=(showF&&page!=="daily"&&page!=="accounts"&&page!=="checklist"?fpanel():"")+(page==="checklist"?clHTML():page==="accounts"?accHTML():page==="home"?homeHTML(f):page==="journal"?jHTML(f):page==="weekly"?wHTML(f):page==="daily"?dHTML():aHTML(f))}
 function fpanel(){const P=[["all","All time"],["7","7 days"],["30","30 days"],["month","This month"]];
@@ -700,17 +723,17 @@ const A={
  rmopt:async e=>{O[e.dataset.f]=O[e.dataset.f].filter(x=>x!==e.dataset.v);await saveO();drawO()},
  save:async()=>{const d=M.d,i=T.findIndex(t=>t.id===d.id);i>=0?T[i]=d:T.push(d);await saveT(d);closeM();render();toast("Trade saved")},
  del:async()=>{if(!M.cd){M.cd=true;drawT();return}T=T.filter(t=>t.id!==M.d.id);await delT(M.d.id);closeM();render()},
- exp:async()=>{const out={app:"tac-journal",format:2,exportedAt:new Date().toISOString(),trades:T,days:DY,opts:O,risk:RISK,home:HM,accounts:AC,checklist:CL,cfields:CFS,counts:{trades:T.length,days:DY.length,accounts:AC.length}};await dlFile("tac-journal-"+today()+".json",new Blob([JSON.stringify(out)],{type:"application/json"}))},
+ exp:async()=>{const out={app:"tec-journal",format:2,exportedAt:new Date().toISOString(),trades:T,days:DY,opts:O,risk:RISK,home:HM,accounts:AC,checklist:CL,cfields:CFS,counts:{trades:T.length,days:DY.length,accounts:AC.length}};await dlFile("tec-journal-"+today()+".json",new Blob([JSON.stringify(out)],{type:"application/json"}))},
  expcsv:async()=>{const cols=["date","time","journal","title","account","rating","instrument","model","direction","entry_tf","po3","result","rr","pnl","confluences","mistakes","notes",...CFS.map(f=>f.name)],q=v=>'"'+String(v??"").replace(/"/g,'""')+'"';
   const rows=[...T].sort(cmp).map(t=>[t.date,t.time,t.jr,t.title,t.acct,t.rating,t.inst,t.model,t.dir,t.tf,(t.po3||[]).join("; "),t.result,t.rr,t.pnl,(t.conf||[]).join("; "),(t.mistakes||[]).join("; "),t.notes,...CFS.map(f=>f.multi?(t[f.key]||[]).join("; "):(t[f.key]||""))].map(q).join(","));
-  await dlFile("tac-journal-trades-"+today()+".csv",new Blob(["\ufeff"+cols.join(",")+"\n"+rows.join("\n")],{type:"text/csv"}))},
+  await dlFile("tec-journal-trades-"+today()+".csv",new Blob(["\ufeff"+cols.join(",")+"\n"+rows.join("\n")],{type:"text/csv"}))},
  imp:()=>$("#impf").click()};
 document.addEventListener("click",e=>{if(e.target.id==="lb"||e.target.closest("#lb")){$("#lb").style.display="none";return}const el=e.target.closest("[data-a]");if(el)A[el.dataset.a]?.(el)});
 document.addEventListener("input",e=>{const b=e.target.dataset?.b;if(b&&M?.d){(e.target.dataset.s?M.d[e.target.dataset.s]:M.d)[b]=e.target.dataset.n?(parseFloat(e.target.value)||0):e.target.value;if(RISK&&(b==="pnl"||b==="rr")){const o=b==="pnl"?"rr":"pnl";M.d[o]=rd(b==="pnl"?M.d.pnl/RISK:M.d.rr*RISK);const x=$("[data-b="+o+"]");if(x)x.value=M.d[o]}}});
 document.addEventListener("change",e=>{if(e.target.classList.contains("ti")){const t=T.find(x=>x.id===e.target.dataset.id);if(t){t.title=e.target.value;saveT(t);render();toast("Saved")}}});
 document.addEventListener("selectionchange",()=>{const ed=$("#ed"),g=getSelection();if(ed&&M&&g.rangeCount&&ed.contains(g.anchorNode))M.rg=g.getRangeAt(0).cloneRange()});
 document.addEventListener("input",e=>{const el=e.target;if(M?.type==="acct"&&el.dataset?.pi!==undefined){const q=M.d.payouts[+el.dataset.pi];q[el.dataset.pf]=el.dataset.pf==="amt"?(parseFloat(el.value)||0):el.value}if(M?.type==="acct")accTot()});
-document.addEventListener("focusout",e=>{const h=e.target.dataset?.h;if(h){HM[h]=e.target.innerText.trim()||(h==="title"?"Tac Journal":HM[h]);saveH()}});
+document.addEventListener("focusout",e=>{const h=e.target.dataset?.h;if(h){HM[h]=e.target.innerText.trim()||(h==="title"?"Tec Journal":HM[h]);saveH()}});
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.dataset?.h==="title"){e.preventDefault();e.target.blur()}});
 $("#hf").onchange=async e=>{const f=e.target.files[0];e.target.value="";if(!f||!hk)return;const u=await shrink(f);hk==="cover"?HM.cover=u:HM.covers[hk]=u;await saveH();render()};
 async function dlFile(name,blob){try{const dl=await claude.use("downloads");if(dl){await dl.save({filename:name,data:blob});return}}catch(err){}const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();toast("Downloaded "+name)}
@@ -725,7 +748,7 @@ const THEMES={light:"White",dark:"Black",sage:"Sage"};
 function applyTheme(t){if(!THEMES[t])t="light";document.documentElement.dataset.theme=t;HM.theme=t;applyCC();try{localStorage.setItem("tj-theme",t)}catch(e){}}
 try{applyTheme(localStorage.getItem("tj-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"))}catch(e){applyTheme("light")}
 /* ===== accounts + landing ===== */
-let DBN="nq-journal",AMODE="signup";const BRAND="Tac Journal",MEMLS={};
+let DBN="nq-journal",AMODE="signup";const BRAND="Tec Journal",MEMLS={};
 const LS={g(k){try{const v=localStorage.getItem(k);if(v!==null)return v}catch(e){}return MEMLS[k]??null},s(k,v){MEMLS[k]=v;try{localStorage.setItem(k,v)}catch(e){}if(k==="tj-users"&&window.tac)try{window.tac.saveUsers(v)}catch(e){}},d(k){delete MEMLS[k];try{localStorage.removeItem(k)}catch(e){}}};
 const USERS=()=>{try{return JSON.parse(LS.g("tj-users")||"{}")}catch(e){return{}}};
 async function hashPw(pw,salt){try{const k=await crypto.subtle.importKey("raw",new TextEncoder().encode(pw),"PBKDF2",false,["deriveBits"]);const b=await crypto.subtle.deriveBits({name:"PBKDF2",salt:new TextEncoder().encode(salt),iterations:120000,hash:"SHA-256"},k,256);return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}catch(e){return"x"+hsh(salt+pw)}}
@@ -753,7 +776,7 @@ function lpBuild(){
 function setAuth(m){AMODE=m;const s=m==="signup";$("#am-t").textContent=s?"Create your account":"Welcome back";$("#am-s").textContent=s?"Start your journal in under a minute.":"Log in to open your dashboard.";$("#am-nw").hidden=!s;$("#am-go").textContent=s?"Create account":"Log in";$("#am-sw").textContent=s?"Already have an account?":"New here?";$("#am-sb").textContent=s?"Log in":"Create account";$("#am-p").autocomplete=s?"new-password":"current-password";$("#am-er").textContent=""}
 function openAuth(m){setAuth(m);$("#am").hidden=false;setTimeout(()=>$(m==="signup"?"#am-n":"#am-e").focus(),30)}
 const closeAuth=()=>{$("#am").hidden=true};
-async function enterApp(u){DBN=u.db;LS.s("tj-session",u.email);CU=u.email;avBtn();T=[];DY=[];AC=[];RISK=0;HM={title:"Tac Journal",quote:"",cover:"",covers:{}};CL=normCL(null);CFS=[];applyCF();READY=false;VIRGIN=false;applyTheme(document.documentElement.dataset.theme);O={};page="home";J="live";flt={};period="all";showF=false;M=null;idb=null;closeAuth();$("#lp").hidden=true;$("#stg").hidden=false;scrollTo(0,0);await load();await autoRestore();nfSync();toast("Welcome, "+(u.name||"trader").split(" ")[0])}
+async function enterApp(u){DBN=u.db;LS.s("tj-session",u.email);CU=u.email;avBtn();T=[];DY=[];AC=[];RISK=0;HM={title:"Tec Journal",quote:"",cover:"",covers:{}};CL=normCL(null);CFS=[];applyCF();READY=false;VIRGIN=false;applyTheme(document.documentElement.dataset.theme);O={};page="home";J="live";flt={};period="all";showF=false;M=null;idb=null;closeAuth();$("#lp").hidden=true;$("#stg").hidden=false;scrollTo(0,0);await load();await autoRestore();nfSync();toast("Welcome, "+(u.name||"trader").split(" ")[0])}
 $("#am-f").addEventListener("submit",async e=>{e.preventDefault();if(CLOUD)return cloudSubmit();const er=$("#am-er"),em=$("#am-e").value.trim().toLowerCase(),pw=$("#am-p").value,nm=$("#am-n").value.trim(),U=USERS(),su=AMODE==="signup";er.textContent="";
  if(su&&!nm)return er.textContent="Add your name.";if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em))return er.textContent="Enter a valid email address.";if(su&&pw.length<8)return er.textContent="Use at least 8 characters for your password.";if(!pw)return er.textContent="Enter your password.";
  $("#am-go").disabled=true;try{if(su){if(U[em])return er.textContent="An account with that email already exists. Try logging in.";const salt=rid()+rid(),u={name:nm,email:em,salt,created:Date.now(),hash:await hashPw(pw,salt),db:Object.keys(U).length?"nq-journal-"+rid():"nq-journal"};U[em]=u;LS.s("tj-users",JSON.stringify(U));await enterApp(u)}
@@ -904,7 +927,7 @@ async function boot(){lpBuild();try{navigator.storage&&navigator.storage.persist
 /* ===== never lose data: automatic backup to disk ===== */
 let VIRGIN=false,READY=false,snapT=null;
 function snapNow(){clearTimeout(snapT);snapT=null;if(!window.tac||!idb||!READY)return Promise.resolve();
- const out={app:"tac-journal",format:2,exportedAt:new Date().toISOString(),user:CU,trades:T,days:DY,opts:O,risk:RISK,home:HM,accounts:AC,checklist:CL,cfields:CFS},n=T.length+DY.length+AC.length+CL.goals.length+CL.todos.length;
+ const out={app:"tec-journal",format:2,exportedAt:new Date().toISOString(),user:CU,trades:T,days:DY,opts:O,risk:RISK,home:HM,accounts:AC,checklist:CL,cfields:CFS},n=T.length+DY.length+AC.length+CL.goals.length+CL.todos.length;
  return Promise.resolve(window.tac.saveBackup(DBN,JSON.stringify(out),n)).catch(()=>{})}
 function snap(){schedSync();if(!window.tac)return;clearTimeout(snapT);snapT=setTimeout(snapNow,1200)}
 addEventListener("pagehide",()=>{snapNow()});
@@ -972,8 +995,8 @@ function nfHTML(){const n=CL.nf,dk=!!window.tac;
  ${n.on?`<div class="cl-nf"><div class="cl-nr"><b>Remind me at</b><div class="cl-tm">${n.times.map((t,i)=>`<span class="cl-tp"><input type="time" data-nt="${i}" value="${t}"><button class="cl-x" style="width:26px;height:26px" data-a="nfrm" data-v="${i}" aria-label="Remove time">${XI}</button></span>`).join("")}${n.times.length<4?`<button data-a="nfadd">+ Add time</button>`:""}</div></div>
  <div class="cl-nr"><b>Then remind me again</b><select data-nrep><option value="0" ${!n.rep?"selected":""}>Don’t repeat</option><option value="30" ${n.rep===30?"selected":""}>Every 30 minutes</option><option value="60" ${n.rep===60?"selected":""}>Every hour</option><option value="120" ${n.rep===120?"selected":""}>Every 2 hours</option></select></div>
  <label class="cl-ck"><input type="checkbox" data-nwk ${n.weekdays?"checked":""}> Skip weekends</label>
- ${dk?`<label class="cl-ck"><input type="checkbox" data-nlogin ${LOGIN?"checked":""}> Start Tac Journal when I log in to my computer</label>`:""}
- <div class="row"><div class="mut" style="font-size:12px;max-width:520px;line-height:1.5">${dk?"Reminders appear while Tac Journal is running. With reminders on, closing the window keeps the app running in the background so they still arrive.":"Reminders appear while this page is open."} You only get a reminder if something is still unfinished.</div><button data-a="nftest">Send a test</button></div></div>`:""}</div>`}
+ ${dk?`<label class="cl-ck"><input type="checkbox" data-nlogin ${LOGIN?"checked":""}> Start Tec Journal when I log in to my computer</label>`:""}
+ <div class="row"><div class="mut" style="font-size:12px;max-width:520px;line-height:1.5">${dk?"Reminders appear while Tec Journal is running. With reminders on, closing the window keeps the app running in the background so they still arrive.":"Reminders appear while this page is open."} You only get a reminder if something is still unfinished.</div><button data-a="nftest">Send a test</button></div></div>`:""}</div>`}
 let LOGIN=false;
 function clHTML(){const t=clToday(),k=t.k,pct=t.total?t.done/t.total:0,up=CL.todos.filter(x=>!x.done&&x.due&&x.due>k).sort((a,b)=>a.due.localeCompare(b.due)),
  cur=[...t.open].sort((a,b)=>(a.due||"9999").localeCompare(b.due||"9999")||a.id.localeCompare(b.id)),dn=CL.todos.filter(x=>x.done).sort((a,b)=>(b.doneAt||"").localeCompare(a.doneAt||"")).slice(0,8),st=clStreak();
@@ -997,7 +1020,7 @@ function clHTML(){const t=clToday(),k=t.k,pct=t.total?t.done/t.total:0,up=CL.tod
  <div class="hr2"><div class="card" style="margin:0"><h3>Last 7 days · goals</h3><div class="cl-wk">${wk}</div></div>${nfHTML()}</div></div>`}
 const nfSave=async()=>{await saveCL();nfSync();render()};
 async function nfSync(){try{if(window.tac){window.tac.setBackground(!!(CU&&CL.nf.on));LOGIN=await window.tac.getLogin()}}catch(e){}}
-function nfSend(items,test){const n=items.length,title=test?"Tac Journal · test reminder":"Tac Journal · "+n+(n===1?" thing":" things")+" left today",body=(items.slice(0,3).join(" · ")||"Nothing left, you’re all done")+(n>3?" · +"+(n-3)+" more":"");
+function nfSend(items,test){const n=items.length,title=test?"Tec Journal · test reminder":"Tec Journal · "+n+(n===1?" thing":" things")+" left today",body=(items.slice(0,3).join(" · ")||"Nothing left, you’re all done")+(n>3?" · +"+(n-3)+" more":"");
  if(window.tac&&window.tac.notify)window.tac.notify(title,body);else if("Notification"in window&&Notification.permission==="granted")new Notification(title,{body});else toast(title+": "+body)}
 function nfTick(){const d=today();if(lastDay&&lastDay!==d&&CU&&READY&&(page==="checklist"||page==="home"))render();lastDay=d;
  if(!CU||!READY||!CL.nf.on)return;const nw=new Date(),mins=nw.getHours()*60+nw.getMinutes(),f=CL.nf.fired;if(f.day!==d){f.day=d;f.slots=[];f.last=0}
@@ -1074,4 +1097,18 @@ A.cfdel=async e=>{const f=CFS.find(x=>x.key===e.dataset.v);if(!f||!confirm("Dele
 document.addEventListener("change",async e=>{const k=e.target.dataset&&e.target.dataset.cfk;if(!k)return;const f=CFS.find(x=>x.key===k),v=e.target.value.trim();if(!f)return;
  if(!v){e.target.value=f.name;return}f.name=v.slice(0,60);applyCF();await saveCF();render()});
 boot().then(()=>{if(/[?&]confirmed=1/.test(location.search)||/type=signup/.test(location.hash)){if(!CU){openAuth("login");const e=$("#am-er");e.style.color="var(--win)";e.textContent="Email confirmed. Log in to open your journal."}try{history.replaceState(null,"",location.pathname)}catch(e){}}});
-</script></body></html>
+</script><div id="nc" role="alertdialog" aria-modal="true"><div class="box"><h3>Device not compatible</h3><p>Tec Journal does not support phones yet. Please open tecjournal.app on a computer, or install the Mac or Windows app.</p></div></div>
+<script>
+(function(){
+var ua=navigator.userAgent||"",tc=navigator.maxTouchPoints>1;
+var phone=/iPhone|iPod|Android.*Mobile|Windows Phone|Mobile Safari/i.test(ua)||(/Android/i.test(ua)&&screen.width<800)||(tc&&Math.min(screen.width,screen.height)<500);
+if(/[?&]desktop=1/.test(location.search))phone=false;
+if(phone){var n=document.getElementById("nc");n.classList.add("on");document.documentElement.style.overflow="hidden"}
+if(window.tac){var d=document.getElementById("lp-dl");if(d)d.style.display="none";document.querySelectorAll('[data-t="lp-dl"]').forEach(function(x){x.style.display="none"})}
+else{var os=/Mac/i.test(ua)&&!tc?"mac":/Win/i.test(ua)?"win":"";
+if(os==="win")document.querySelector('[data-os=win]').classList.add("rec");
+if(os==="mac"){var arm=true;try{var c=document.createElement("canvas").getContext("webgl"),e=c.getExtension("WEBGL_debug_renderer_info"),r=e?c.getParameter(e.UNMASKED_RENDERER_WEBGL):"";if(/Intel/i.test(r)&&!/Apple/i.test(r))arm=false}catch(x){}
+document.querySelector('[data-os='+(arm?"mac-arm":"mac-intel")+']').classList.add("rec")}}
+})();
+</script>
+</body></html>
