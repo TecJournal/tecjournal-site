@@ -407,6 +407,7 @@ body[data-pg=checklist] .hbar .seg,body[data-pg=checklist] #fb{display:none}
 <form id="am-f" novalidate><div id="am-nw"><label for="am-n">Name</label><input id="am-n" autocomplete="name" placeholder="Your name"></div><label for="am-e">Email</label><input id="am-e" type="email" autocomplete="email" placeholder="you@email.com"><label for="am-p">Password</label><input id="am-p" type="password" autocomplete="current-password" placeholder="At least 8 characters"><button type="button" id="am-fp" hidden style="border:0;background:none;padding:2px 0;margin-top:6px;color:var(--ac);font-weight:600;font-size:13px;display:block">Forgot your password?</button>
 <div class="lp-err" id="am-er" role="alert"></div><button type="submit" class="lp-cta lp-big" id="am-go" style="width:100%;margin-top:6px">Create account</button></form>
 <div class="row" style="justify-content:center;margin-top:16px"><span class="mut" id="am-sw"></span><button data-lp="swap" id="am-sb" style="background:none;padding:6px 4px;color:var(--ac);font-weight:600"></button></div>
+<div class="row" style="justify-content:center;margin-top:4px"><button type="button" data-lp="close" id="am-back" style="background:none;padding:6px 4px;color:var(--mut);font-weight:500;font-size:13px">&larr; Back to homepage</button></div>
 <div class="lp-note">Your journal is saved on your device and synced to your account. Logging out never deletes it. By continuing you agree to our <a href="https://tecjournal.app/terms" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Terms</a> and <a href="https://tecjournal.app/privacy" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Privacy Policy</a>.</div></div></div>
 <div class="stage" id="stg" hidden><div class="shell"><aside class="rail"><button class="rb brand" data-a="nav" data-v="home" title="Home"><img src="logo.png" alt="Tec Journal"></button><button class="rb" data-a="nav" data-v="home" title="Home"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></button><button class="rb" data-a="nav" data-v="journal" title="Journal"><svg viewBox="0 0 24 24"><path d="M4 5h6a3 3 0 013 3v12a2 2 0 00-2-2H4z"/><path d="M20 5h-6a3 3 0 00-3 3v12a2 2 0 012-2h7z"/></svg></button><button class="rb" data-a="nav" data-v="daily" title="Daily bias"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></button><button class="rb" data-a="nav" data-v="checklist" title="Daily checklist"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.5 1.5L7 5M3.5 12l1.5 1.5L7 11M3.5 18l1.5 1.5L7 17"/></svg></button><button class="rb" data-a="nav" data-v="weekly" title="Weekly review"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></button><button class="rb" data-a="nav" data-v="analytics" title="Analytics"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></button><button class="rb" data-a="nav" data-v="accounts" title="Prop accounts"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18M16 15h2"/></svg></button><span class="sp"></span><button class="rb" data-a="logout" title="Log out"><svg viewBox="0 0 24 24"><path d="M9 4H5a2 2 0 00-2 2v12a2 2 0 002 2h4"/><path d="M16 8l4 4-4 4M20 12H9"/></svg></button><button class="rb" data-a="theme" title="Change theme"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 010 18z" style="fill:currentColor"/></svg></button><button class="rb" data-a="opts" title="Customize"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg></button></aside><main class="main"><div class="hbar"><div><div class="logo"></div><h1 id="pt"></h1></div><span class="sp" style="flex:1"></span><div class="seg"><button data-a="mode" data-v="live">Live</button><button data-a="mode" data-v="backtest">Backtest</button></div><button id="fb" data-a="fpanel">Filters</button><button class="pri" id="nb" data-a="newT">+ New trade</button><button id="sy" class="sy" data-a="syncnow" data-s="none" hidden aria-label="Cloud sync status"></button><button class="av" id="avb" data-a="pmenu" aria-label="Account menu" aria-haspopup="menu"></button></div><div id="app"></div></main></div></div>
 <div id="lb"><img alt=""></div><div id="toast"></div><input type="file" id="impf" accept=".json" hidden><input type="file" id="hf" accept="image/*" hidden><input type="file" id="avf" accept="image/*" hidden>
@@ -988,13 +989,15 @@ if(CLOUD){A.logout=async()=>{try{await syncNow()}catch(e){}await cloudSignOut();
   await snapNow();try{idb&&idb.close()}catch(e){}idb=null;READY=false;try{await window.tac?.archiveBackup(u.db)}catch(e){}await new Promise(r=>{try{const q=indexedDB.deleteDatabase(u.db);q.onsuccess=q.onerror=q.onblocked=()=>r()}catch(e){r()}});
   const U=USERS();delete U[u.email];LS.s("tj-users",JSON.stringify(U));LS.d("tj-session");CU=null;T=[];DY=[];AC=[];closeM();closePM();$("#stg").hidden=true;$("#lp").hidden=false;scrollTo(0,0);toast("Your account was deleted")}}
 
+/* page addresses (website only): /homepage = landing, /login and /signup open the sign-in window */
+function _autoAuth(){if(window.tac||!/^https?:/.test(location.protocol))return Object.keys(USERS()).length?"login":null;const p=location.pathname.replace(/\/+$/,"").toLowerCase();return p==="/login"?"login":p==="/signup"?"signup":null}
 async function boot(){lpBuild();try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
  if(window.tac){try{if(!Object.keys(USERS()).length){const sv=await window.tac.readUsers();if(sv&&Object.keys(JSON.parse(sv)).length)LS.s("tj-users",sv)}else window.tac.saveUsers(LS.g("tj-users"))}catch(e){}}
  const io="IntersectionObserver"in window?new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("lp-on");io.unobserve(x.target)}}),{threshold:.08}):null;document.querySelectorAll(".lp-rv").forEach(n=>io?io.observe(n):n.classList.add("lp-on"));
  const em=LS.g("tj-session"),u=em&&USERS()[em];if(CLOUD){let ss=null;try{ss=(await sb.auth.getSession()).data.session}catch(e){}
-  if(ss&&ss.user)await enterCloud(ss.user);else if(u&&u.cloud){await enterApp(u);setSt("off")}else{$("#lp").hidden=false;if(Object.keys(USERS()).length)openAuth("login")}}
+  if(ss&&ss.user)await enterCloud(ss.user);else if(u&&u.cloud){await enterApp(u);setSt("off")}else{$("#lp").hidden=false;{const _m=_autoAuth();if(_m)openAuth(_m)}}}
  else if(u)enterApp(u);
- else{$("#lp").hidden=false;if(Object.keys(USERS()).length)openAuth("login")}}
+ else{$("#lp").hidden=false;{const _m=_autoAuth();if(_m)openAuth(_m)}}}
 
 /* ===== never lose data: automatic backup to disk ===== */
 let VIRGIN=false,READY=false,snapT=null;
@@ -1260,6 +1263,22 @@ if(!v("n"))return er.textContent="Add your name.";if(!/^[^@\s]+@[^@\s]+\.[^@\s]+
 er.textContent="";var body="Affiliate application\n\nName: "+v("n")+"\nEmail: "+v("e")+"\nChannel / link: "+v("l")+"\nAudience size: "+(v("a")||"-")+"\n\n"+(v("m")||"");
 location.href="mailto:"+SUP+"?subject="+encodeURIComponent("Affiliate application: "+v("n"))+"&body="+encodeURIComponent(body);
 document.getElementById("af-n").textContent="Your email app should open with the message ready to send. If nothing opened, email us at "+SUP+" with your name, email and link."});
+})();
+</script>
+<script>
+(function(){
+if(window.tac||!/^https?:/.test(location.protocol)||!window.history||!history.replaceState)return;
+var lp=document.getElementById("lp"),am=document.getElementById("am"),tt=document.getElementById("am-t");if(!lp||!am)return;
+function want(){if(lp.hidden)return "/";if(!am.hidden){var t=(tt&&tt.textContent||"").toLowerCase();if(t.indexOf("create")>-1)return "/signup";if(t.indexOf("welcome")>-1)return "/login";return null}return "/homepage"}
+var last="";function sync(){var w=want();if(!w)return;var cur=location.pathname.replace(/\/+$/,"")||"/";if(cur===w||w===last&&cur===w)return;try{history.replaceState(null,"",w+location.search+location.hash)}catch(e){}last=w}
+var mo=new MutationObserver(function(){sync()});mo.observe(lp,{attributes:true,attributeFilter:["hidden"]});mo.observe(am,{attributes:true,attributeFilter:["hidden"]});if(tt)mo.observe(tt,{childList:true,characterData:true,subtree:true});
+setTimeout(sync,400);setTimeout(sync,1500);
+})();
+</script>
+<script>
+(function(){var am=document.getElementById("am"),lp=document.getElementById("lp");if(!am)return;
+am.addEventListener("click",function(e){if(e.target===am&&lp&&!lp.hidden)am.hidden=true});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!am.hidden&&lp&&!lp.hidden)am.hidden=true});
 })();
 </script>
 </body></html>
