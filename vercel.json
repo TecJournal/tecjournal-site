@@ -1,1 +1,1 @@
-{"cleanUrls":true,"rewrites":[{"source":"/homepage","destination":"/index.html"},{"source":"/login","destination":"/index.html"},{"source":"/signup","destination":"/index.html"}]}
+{"cleanUrls":true,"rewrites":[{"source":"/homepage","destination":"/"},{"source":"/login","destination":"/"},{"source":"/signup","destination":"/"}]}
