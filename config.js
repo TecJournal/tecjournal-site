@@ -2,5 +2,6 @@
 window.SUPA={url:"https://dmfzknocabxyasphcych.supabase.co",key:"sb_publishable_rIIM6HvMBojtkptnrXlszQ_dLXPhqyk"};
 window.DEMO_VIDEO="https://youtu.be/gpZql645lxE";
 window.PAYWALL=true;
-window.CHECKOUT_URL="https://buy.polar.sh/polar_cl_XqWbkEyiLnuKzR1BqvFnbhh39LInwgQ3ePftg4BMiX5";
-window.PORTAL_URL="https://polar.sh/tec-journal/portal";
+window.PRICE_TEXT="€14.99";
+window.CHECKOUT_URL="https://buy.stripe.com/fZu9ASeTn06G9j743NdIA00";
+window.PORTAL_URL="";
